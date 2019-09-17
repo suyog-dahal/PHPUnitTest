@@ -3,31 +3,32 @@ use PHPUnit\Framework\TestCase;
 use \App\Models\Users;
 class SampleTest extends TestCase 
 {
-	protected $user;
-	public function setUp(){
-		$this->user = new \App\Models\Users;
-	}
 	public function testgettingAndSettingName(){
-		$this->user->setFirstName('suyog');
-		$this->assertEquals($this->user->getFirstName(), 'suyog');
+		$user = new \App\Models\Users;
+		$user->setFirstName('suyog');
+		$this->assertEquals($user->getFirstName(), 'suyog');
 	}
 
 	public function testgetSetFullName(){
+		$user = new \App\Models\Users;
 		$user->setFullName('suyog', 'dahal');
 		$this->assertEquals($user->getFullName(), 'suyog dahal');
 	}
 
 	public function testtrim(){
+		$user = new \App\Models\Users;
 		$user->setFirstName('    suyog');
 		$this->assertEquals($user->getFirstName(), 'suyog'); 	
 	}
 
 	public function testEmail(){
+		$user = new \App\Models\Users;
 		$user->setEmail('suyog@gmail.com');
 		$this->assertEquals($user->getEmail(), 'suyog@gmail.com');
 	}
 
 	public function testEmailVar(){
+		$user = new \App\Models\Users;
 		$user->setFirstName('suyog');
 		$user->setLastName('dahal');
 		$user->setEmail('suyo@gmail.com');
