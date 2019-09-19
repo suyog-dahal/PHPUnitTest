@@ -26,9 +26,12 @@ class SampleTest extends TestCase
 		$user->setEmail('suyog@gmail.com');
 		$this->assertEquals($user->getEmail(), 'suyog@gmail.com');
 	}
+	/**
+	 * @test
+	**/
 
 	public function testEmailVar(){
-		$user = new \App\Models\Users;
+	$user = new \App\Models\Users;
 		$user->setFirstName('suyog');
 		$user->setLastName('dahal');
 		$user->setEmail('suyo@gmail.com');
@@ -41,4 +44,30 @@ class SampleTest extends TestCase
 		$this->assertEquals($EmailVariables['full_name'], 'suyog dahal');
 		$this->assertEquals($EmailVariables['email'], 'suyo@gmail.com');
 	}
+	// testing validation Requests
+	public function test_validating_name(){
+		$user = new \App\Models\users;
+		$this->post('/{route}', [$user->First_Name => ''])->assertSessionHasErrors('name');
+	}
+	/**
+	 * @test
+	 * @dataProvider form_inputs_validation
+	 **/
+	public function form_validation($form_key, $form_value){
+		$user = new \App\Models\users;
+		$this->post('/{{route}}', [$form_key => $form_value])->assertSessionHasErrors($form_key);
+	}
+
+	/** 
+	 *	@test 
+	**/
+	public function form_inputs_validation(){
+		$user = new \App\Models\users;
+		return [
+			[$user->First_Name, ' '],
+			[$user->Last_Name, ' ']
+		]
+	}
+
+
 }
