@@ -45,18 +45,18 @@ class SampleTest extends TestCase
 		$this->assertEquals($EmailVariables['email'], 'suyo@gmail.com');
 	}
 	// testing validation Requests
-	public function test_validating_name(){
+	/*public function test_validating_name(){
 		$user = new \App\Models\users;
 		$this->post('/{route}', [$user->First_Name => ''])->assertSessionHasErrors('name');
 	}
-	/**
+	*
 	 * @test
 	 * @dataProvider form_inputs_validation
-	 **/
+	 *
 	public function form_validation($form_key, $form_value){
 		$user = new \App\Models\users;
 		$this->post('/{{route}}', [$form_key => $form_value])->assertSessionHasErrors($form_key);
-	}
+	}*/
 
 	/** 
 	 *	@test 
